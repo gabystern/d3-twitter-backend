@@ -20,6 +20,10 @@ gem 'puma', '~> 3.7'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'active_model_serializers'
+gem 'rest-client'
+gem 'twitter'
+gem 'pry'
+gem 'figaro'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

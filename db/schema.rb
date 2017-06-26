@@ -21,20 +21,21 @@ ActiveRecord::Schema.define(version: 20170626143607) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
+ 
   create_table "graphs", force: :cascade do |t|
     t.string "title"
+    t.integer "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tweets", force: :cascade do |t|
-    t.string "tweet_id"
-    t.string "hashtag"
-    t.string "text"
+    t.string "tweet_identifier"
+    t.string "hashtags"
+    t.string "content"
     t.string "retweet_count"
-    t.string "coordinates"
     t.string "tweet_created_at"
+    t.integer "graph_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
