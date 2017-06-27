@@ -10,7 +10,7 @@ class TweetsProcessor
   end
 
   def call_twitter
-    results = twitter_login.search("#travelban -rt", {language: "en", include_rts: false}).take(5)
+    results = twitter_login.search("#travelban -rt", {language: "en", include_rts: false}).take(100)
     results
   end
 
