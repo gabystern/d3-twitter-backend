@@ -1,5 +1,5 @@
 class Account < ApplicationRecord
   has_secure_password
-  has_many :graphs
-  has_many :tweets, through: :graphs
+  has_many :searches
+  has_many :graphs, through: :searches
 end
