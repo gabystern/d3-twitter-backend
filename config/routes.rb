@@ -3,10 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-        resources :accounts
         resources :tweets
-        resources :searches
-        resources :graphs
+        resources :charts
     end
   end
 
