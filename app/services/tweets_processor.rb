@@ -1,5 +1,8 @@
 require 'pry'
 class TweetsProcessor
+  def initialize(searchTerm)
+    @searchTerm = searchTerm[:searchTerm]
+  end
 
   def twitter_login
     client = Twitter::REST::Client.new do |config|
@@ -11,11 +14,12 @@ class TweetsProcessor
   end
 
   def call_twitter
-    results = twitter_login.search("#travelban -rt", {language: "en", include_rts: false}).take(100)
+    term = @searchTerm
+    results = twitter_login.search("##{term} -rt", {language: "en", include_rts: false}).take(100)
     results
   end
 
-  def parse_tweets()
+  def parse_tweets
     tweets = self.call_twitter
     all_tweets = tweets.map do |x|
       id = x.attrs[:id]
@@ -31,5 +35,3 @@ class TweetsProcessor
   end
 
 end
-
-# ajaxcall on submit
