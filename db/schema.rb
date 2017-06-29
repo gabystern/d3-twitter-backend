@@ -10,32 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626143607) do
+ActiveRecord::Schema.define(version: 20170628202415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accounts", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
- 
-  create_table "graphs", force: :cascade do |t|
-    t.string "title"
-    t.integer "account_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tweets", force: :cascade do |t|
-    t.string "tweet_identifier"
-    t.string "hashtags"
-    t.string "content"
-    t.string "retweet_count"
-    t.string "tweet_created_at"
-    t.integer "graph_id"
+  create_table "charts", force: :cascade do |t|
+    t.string "name"
+    t.integer "width"
+    t.integer "height"
+    t.string "main_color"
+    t.string "secondary_color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
