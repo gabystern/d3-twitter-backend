@@ -1,4 +1,5 @@
 require 'pry'
+
 class TweetsProcessor
   def initialize(searchTerm)
     @searchTerm = searchTerm[:searchTerm]
@@ -15,7 +16,7 @@ class TweetsProcessor
 
   def call_twitter
     term = @searchTerm
-    results = twitter_login.search("##{term} -rt", {language: "en", include_rts: false}).take(100)
+    results = twitter_login.search("##{term} -rt", {language: "en", include_rts: false}).take(4)
     results
   end
 
@@ -24,7 +25,7 @@ class TweetsProcessor
     all_tweets = tweets.map do |x|
       id = x.attrs[:id]
       created_at = x.attrs[:created_at]
-      date = Date.parse(created_at).strftime("%m/%d/%Y")
+      date = DateTime.parse(created_at)
       hashtags = x.attrs[:entities][:hashtags].map do |x|
         x[:text]
       end
