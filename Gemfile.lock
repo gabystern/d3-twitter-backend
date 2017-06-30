@@ -193,7 +193,7 @@ DEPENDENCIES
   rest-client
   spring
   spring-watcher-listen (~> 2.0.0)
-  twitter
+  twitter (~> 6.0)
   tzinfo-data
 
 BUNDLED WITH

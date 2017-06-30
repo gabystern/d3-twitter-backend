@@ -22,7 +22,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 gem 'active_model_serializers'
 gem 'rest-client'
-gem 'twitter'
+gem 'twitter', '~> 6.0'
 gem 'pry'
 gem 'figaro'
 # Use Capistrano for deployment
