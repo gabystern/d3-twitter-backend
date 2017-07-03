@@ -16,7 +16,7 @@ class TweetsProcessor
 
   def call_twitter
     term = @searchTerm
-    results = twitter_login.search("##{term} -rt", {language: "en", include_rts: false}).take(4)
+    results = twitter_login.search("##{term} -rt", {language: "en", include_rts: false}).take(200)
     results
   end
 
@@ -31,7 +31,10 @@ class TweetsProcessor
       end
       retweet_count = x.attrs[:retweet_count]
       content = x.attrs[:text]
-      tweet = Tweet.new(tweet_identifier: id, tweet_created_at: date, hashtags: hashtags, retweet_count: retweet_count, content: content)
+      sentiment = SentimentAnalyzer.new
+      sentiment.set_default
+      sentiment_score = sentiment.score content
+      tweet = Tweet.new(tweet_identifier: id, tweet_created_at: date, hashtags: hashtags, retweet_count: retweet_count, content: content, sentiment_score: sentiment_score)
     end
   end
 
