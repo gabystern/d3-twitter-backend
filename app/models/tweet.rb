@@ -1,7 +1,7 @@
 class Tweet
   include ActiveModel::Model
   include ActiveModel::Serialization
-  attr_accessor :tweet_identifier, :tweet_created_at, :hashtags, :retweet_count, :content
+  attr_accessor :tweet_identifier, :tweet_created_at, :hashtags, :retweet_count, :content, :sentiment_score
 
   alias :read_attribute_for_serialization :send
 

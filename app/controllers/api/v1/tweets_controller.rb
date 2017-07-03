@@ -24,11 +24,5 @@ class Api::V1::TweetsController < ApplicationController
   def destroy
   end
 
-  # private
-  #
-  # def processor_params
-  #   params.require(:tweetsprocessor).permit(:search_term)
-  # end
-
 
 end

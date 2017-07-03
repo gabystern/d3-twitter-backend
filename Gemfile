@@ -25,6 +25,7 @@ gem 'rest-client'
 gem 'twitter', '~> 6.0'
 gem 'pry'
 gem 'figaro'
+gem 'sentimental'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
