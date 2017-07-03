@@ -24,6 +24,7 @@ class TweetsProcessor
     tweets = self.call_twitter
     all_tweets = tweets.map do |x|
       id = x.attrs[:id]
+      username = x.attrs[:user][:screen_name]
       created_at = x.attrs[:created_at]
       date = DateTime.parse(created_at)
       hashtags = x.attrs[:entities][:hashtags].map do |x|
@@ -34,7 +35,13 @@ class TweetsProcessor
       sentiment = SentimentAnalyzer.new
       sentiment.set_default
       sentiment_score = sentiment.score content
-      tweet = Tweet.new(tweet_identifier: id, tweet_created_at: date, hashtags: hashtags, retweet_count: retweet_count, content: content, sentiment_score: sentiment_score)
+      if sentiment_score > 0.1
+        sentiment = "positive"
+      elsif sentiment_score < -0.1
+        sentiment = "negative"
+      else sentiment = "neutral"
+      end
+      tweet = Tweet.new(tweet_identifier: id, username: username, tweet_created_at: date, hashtags: hashtags, retweet_count: retweet_count, content: content, sentiment_score: sentiment_score, sentiment: sentiment)
     end
   end
 
