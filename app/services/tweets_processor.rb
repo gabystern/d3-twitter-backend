@@ -16,7 +16,7 @@ class TweetsProcessor
 
   def call_twitter
     term = @searchTerm
-    results = twitter_login.search("##{term} -rt", {language: "en", include_rts: false}).take(30)
+    results = twitter_login.search("##{term} -rt", {language: "en", include_rts: false}).take(300)
     results
   end
 
